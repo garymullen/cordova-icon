@@ -313,6 +313,7 @@ var generateIcons = function(platforms) {
       sequence = sequence.then(function() {
         return generateIconsForPlatform(platform)
       })
+      console.log('X HERE 0')
       all.push(sequence)
     })
   console.log('X HERE 1')

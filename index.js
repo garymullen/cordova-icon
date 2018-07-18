@@ -315,6 +315,8 @@ var generateIcons = function(platforms) {
       })
       all.push(sequence)
     })
+  console.log('X HERE 1')
+
   Q.all(all).then(function() {
     deferred.resolve()
   })
@@ -402,5 +404,7 @@ atLeastOnePlatformFound()
     }
   })
   .then(function() {
-    console.log('')
+    console.log('THE END')
   })
+
+console.log('NOTHING LEFT')

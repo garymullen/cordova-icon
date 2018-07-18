@@ -260,8 +260,11 @@ var generateIcon = function(platform, icon) {
       },
       function(err, stdout, stderr) {
         if (err) {
+          console.log('HERE 4.1')
+          console.log(srcPath, dstPath, icon)
           deferred.reject(err)
         } else {
+          console.log('HERE 4.2')
           deferred.resolve()
           display.success(icon.name + ' cropped')
         }

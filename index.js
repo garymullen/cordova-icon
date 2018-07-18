@@ -227,7 +227,7 @@ var generateIcon = function(platform, icon) {
   if (!fs.existsSync(dst)) {
     fs.mkdirsSync(dst)
   }
-  console.log('HERE 3')
+  console.log('HERE 3', icon)
   ig.resize(
     {
       srcPath: srcPath,

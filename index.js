@@ -214,6 +214,8 @@ var generateIcon = function(platform, icon) {
   var deferred = Q.defer()
   var srcPath = settings.ICON_FILE
   var platformPath = srcPath.replace(/\.png$/, '-' + platform.name + '.png')
+  console.log('This is sad')
+
   console.log('HERE 1')
 
   if (fs.existsSync(platformPath)) {
@@ -249,6 +251,7 @@ var generateIcon = function(platform, icon) {
   )
   console.log('HERE 4')
   if (icon.height) {
+    console.log('HERE 4.0')
     ig.crop(
       {
         srcPath: srcPath,
@@ -271,6 +274,7 @@ var generateIcon = function(platform, icon) {
       }
     )
   }
+  console.log('HERE 4', deferred.promise)
   return deferred.promise
 }
 
@@ -284,9 +288,12 @@ var generateIconsForPlatform = function(platform) {
   display.header('Generating Icons for ' + platform.name)
   var all = []
   var icons = platform.icons
+  console.log('GENERATING ICONS')
   icons.forEach(function(icon) {
     all.push(generateIcon(platform, icon))
   })
+  console.log('DONE GENERATING ICONS')
+
   return Promise.all(all)
 }
 

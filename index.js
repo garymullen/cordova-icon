@@ -214,14 +214,18 @@ var generateIcon = function (platform, icon) {
   var deferred = Q.defer();
   var srcPath = settings.ICON_FILE;
   var platformPath = srcPath.replace(/\.png$/, '-' + platform.name + '.png');
+  console.log('HERE 1');
+  
   if (fs.existsSync(platformPath)) {
     srcPath = platformPath;
   }
+  console.log('HERE 2');
   var dstPath = platform.iconsPath + icon.name;
   var dst = path.dirname(dstPath);
   if (!fs.existsSync(dst)) {
     fs.mkdirsSync(dst);
   }
+  console.log('HERE 3');
   ig.resize({
     srcPath: srcPath,
     dstPath: dstPath,
@@ -231,12 +235,15 @@ var generateIcon = function (platform, icon) {
     height: icon.size
   } , function(err, stdout, stderr){
     if (err) {
+      console.log('HERE 3.1');
       deferred.reject(err);
     } else {
+      console.log('HERE 3.2');
       deferred.resolve();
       display.success(icon.name + ' created');
     }
   });
+  console.log('HERE 4');
   if (icon.height) {
     ig.crop({
       srcPath: srcPath,

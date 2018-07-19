@@ -1,3 +1,15 @@
+{
+  var childProcess = require('child_process')
+  var oldSpawn = childProcess.spawn
+  function mySpawn() {
+    console.log('spawn called')
+    console.log(arguments)
+    var result = oldSpawn.apply(this, arguments)
+    return result
+  }
+  childProcess.spawn = mySpawn
+}
+
 var fs = require('fs-extra')
 var path = require('path')
 var xml2js = require('xml2js')
